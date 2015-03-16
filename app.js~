@@ -19,9 +19,9 @@ app.get('/', function (request, response) {
 
 app.get('/hi/:cad', function (request, response) {
     var obj = {};
-	
+	csv.calculate(request.params.cad);
 	console.log('body: ' + JSON.stringify(request.params.cad));
-	response.send(JSON.stringify(csv.calculate(request.params.cad)));
+	response.send(JSON.stringify(request.params.cad));
 });
 
 app.listen(app.get('port'), function () {

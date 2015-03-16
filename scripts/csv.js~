@@ -16,7 +16,7 @@ $.ajax({
             type: 'GET',
             success: function (data) {
 alert("sfsf");
-$('body').append(data);
+$('body').add(data);
                 render(data);
             }
             
