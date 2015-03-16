@@ -16,6 +16,11 @@ app.get('/', function (request, response) {
    response.render('index', { title: 'Comma Separated Value Analyzer' });
 });
 
+app.post('/hi', function (request, response) {
+   console.log('req received'+request.toString());
+   response.send('Hello' );
+});
+
 app.listen(app.get('port'), function () {
    console.log("Node app is running at localhost:" + app.get('port'));
 });

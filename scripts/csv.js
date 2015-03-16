@@ -65,4 +65,16 @@ window.onload = function() {
     if (window.localStorage && localStorage.original) {
         document.getElementById("original").value = localStorage.original;
     }
+
+alert("Dfg");
+$.ajax({
+            url: '/hi',
+            type: 'POST',
+	    data: $("#original").value,
+            success: function (data) {
+alert("sfsf");
+                $('body').html(data);
+            }
+            
+        });
 };
