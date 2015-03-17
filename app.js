@@ -20,8 +20,8 @@ app.get('/', function (request, response) {
 app.get('/hi/:cad', function (request, response) {
     var obj = {};
 	
-	console.log('body: ' + JSON.stringify(request.params.cad));
-	response.send(JSON.stringify(csv.calculate(request.params.cad)));
+	console.log('body: ' + request.params.cad);
+	response.json(csv.calculate(request.params.cad));
 });
 
 app.listen(app.get('port'), function () {

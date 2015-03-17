@@ -1,26 +1,20 @@
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
 $(document).ready(function() {
     $("button").click(function() {
-        //calculate();
+      var original = document.getElementById("original");
+      var lines = original.value.split(/\n+\s*/);
+      var temp = original.value;
 
+      if (window.localStorage) localStorage.original = temp;
 
- var original = document.getElementById("original");
-    var temp = original.value;
-    var lines = temp.split(/\n+\s*/);
-
-    if (window.localStorage) localStorage.original = temp;
-
-alert("Dfg");
-$.ajax({
-            url: '/hi/'+ lines +'/',
-            type: 'GET',
-            success: function (data) {
-alert("sfsf");
-$('body').append(data);
-                render(data);
-            }
-            
-        });
+	  $.ajax({
+	      url: '/hi/'+ JSON.stringify(lines) +'/',
+	      type: 'GET',
+	      dataType: "JSON",
+	      success: function (data) {
+		render(data);
+	      }    
+	    });
     });
 });
 
@@ -34,13 +28,11 @@ window.onload = function() {
 
 };
 
+
+
+
 function render(rows){
-
-var resultTemplate = document.getElementById("resultTemplate").innerHTML;
-
-    $('#finaltable').innerHTML = _.template(resultTemplate, { rows: rows });
-   /* if (errText != "") {
-        finaltable.innerHTML += '' + errText + '';
-    }*/
-
+	var resultTemplate = $('#resultTemplate').html();
+    	$('#finaltable').html(_.template(resultTemplate, { rows: rows  }));
 }
+

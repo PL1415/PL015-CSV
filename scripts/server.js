@@ -1,5 +1,7 @@
 module.exports = {
- calculate: function (lines) {
+ calculate: function (input) {
+
+    var lines = JSON.parse(input);
     var result;
     var regexp = /\s*"((?:[^"\\]|\\.)*)"\s*,?|\s*([^,]+),?|\s*,/g;
     var commonLength = NaN;
@@ -24,6 +26,7 @@ module.exports = {
                 commonLength = m.length;
                 error = false;
             }
+console.log('lines'+lines[t])
             for(var i in m) {
                 var removecomma = m[i].replace(/,\s*$/,'');
                 var remove1stquote = removecomma.replace(/^\s*"/,'');
@@ -42,6 +45,7 @@ module.exports = {
             error = true;
         }
     }
+
 return rows
 }}
 
