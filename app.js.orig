@@ -1,10 +1,13 @@
 var _ = require('underscore');
 var $ = require('jquery');
 var express = require('express');
+<<<<<<< HEAD
+var csv = require('./scripts/server.js');
+=======
 
 var csv = require('./scripts/server.js');
 
-
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff
 var app = express();
 var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
@@ -20,11 +23,18 @@ app.get('/', function (request, response) {
    response.render('index', { title: 'CSV' });
 });
 
-
+app.get('/hi/:cad', function (request, response) {
+    var obj = {};
+	
+	console.log('body: ' + request.params.cad);
+	response.json(csv.calculate(request.params.cad));
+});
 
 app.listen(app.get('port'), function () {
    console.log("Node app is running at localhost:" + app.get('port'));
 });
+<<<<<<< HEAD
+=======
 
 app.get('/ajaxEx/:cad', function (request, response) {
    
@@ -35,4 +45,4 @@ app.get('/ajaxEx/:cad', function (request, response) {
 app.get('/test/', function (request, response) {
    response.render('test', { title: 'CSV test' });
 });
-
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff

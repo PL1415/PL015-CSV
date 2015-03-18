@@ -13,20 +13,29 @@ suite('CSV - Creando las tablas ...', function() {
 
     test('Primera prueba: Creando tablas con una fila.', function() {
         original.value = '1';
-        calculate();
+        calculateN();
         
         result = document.getElementById('result');
         
-        assert.deepEqual(result.innerHTML
+        textoRes = (result.innerHTML).replace(/(>[\s|\n]+<)/g, '><'); 
+        
+        textoRes = textoRes.replace(/([\s|\n]+<)/g, '<');
+        
+        assert.deepEqual(textoRes
                         , '<tbody><tr class=""><td>1</td></tr></tbody>'
                         , 'Elemento unico.');
         
         original.value = '1, 2';
-        calculate();
+        calculateN();
         
         result = document.getElementById('result');
         
-        assert.deepEqual(result.innerHTML
+        textoRes = (result.innerHTML).replace(/(>[\s|\n]+<)/g, '><'); 
+        
+        textoRes = textoRes.replace(/([\s|\n]+<)/g, '<');
+        
+        
+        assert.deepEqual(textoRes
                         , '<tbody><tr class=""><td>1</td><td> 2</td></tr></tbody>'
                         , 'Dos elementos.');
         
@@ -35,20 +44,30 @@ suite('CSV - Creando las tablas ...', function() {
     
     test('Segunda prueba: Creando tablas con varias filas.', function() {
         original.value = '1\n2';
-        calculate();
+        calculateN();
         
         result = document.getElementById('result');
         
-        assert.deepEqual(result.innerHTML
+        textoRes = (result.innerHTML).replace(/(>[\s|\n]+<)/g, '><'); 
+        
+        textoRes = textoRes.replace(/([\s|\n]+<)/g, '<');
+        
+        
+        assert.deepEqual(textoRes
                         , '<tbody><tr class=""><td>1</td></tr><tr class=""><td>2</td></tr></tbody>'
                         , 'Elemento unico.');
         
         original.value = '1, 2\n3, 4';
-        calculate();
+        calculateN();
         
         result = document.getElementById('result');
         
-        assert.deepEqual(result.innerHTML
+        textoRes = (result.innerHTML).replace(/(>[\s|\n]+<)/g, '><'); 
+        
+        textoRes = textoRes.replace(/([\s|\n]+<)/g, '<');
+        
+        
+        assert.deepEqual(textoRes
                         , '<tbody><tr class=""><td>1</td><td> 2</td></tr><tr class=""><td>3</td><td> 4</td></tr></tbody>'
                         , 'Dos elementos.');
     });
@@ -85,22 +104,27 @@ suite('CSV - Comprobando deteccion de errores ...', function() {
 
     test('Cuarta prueba: Comprobando la aparicion de error cuando el texto de entrada esta vacio.', function() {
         original.value = '';
-        calculate();
+        calculateN();
         
         result = document.getElementById('result');
         
         assert.deepEqual(result.innerHTML
-                        , ''
+                        , '\n                    \n                '
                         , 'Error - Sin texto');
     });
     
     test('Quinta prueba: Comprobando la aparicion de error cuando una linea del texto no tiene el numero esperado de elementos.', function() {
         original.value = '1,2\n1';
-        calculate();
+        calculateN();
         
         result = document.getElementById('result');
         
-        assert.deepEqual(result.innerHTML
+        textoRes = (result.innerHTML).replace(/(>[\s|\n]+<)/g, '><'); 
+        
+        textoRes = textoRes.replace(/([\s|\n]+<)/g, '<');
+        
+        
+        assert.deepEqual(textoRes
                         , '<tbody><tr class=""><td>1</td><td>2</td></tr><tr class="error"><td>1</td></tr></tbody>'
                         , 'Error - numero erroneo de entradas');
     });

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="tests/mocha.css" />
+<script src="../scripts/csv.js" data-cover></script>
+
+
+<div id="cuerpo">
+        <h1>Comma Separated Value Analyzer</h1>
+        <div>
+            <i>Write a CSV string. Click the table button. The program outputs a table with the specified data.</i>
+        </div>
+        <table>
+            <tr>
+                <th>CSV string:</th> <!-- autofocus attribute is HTML5 -->
+                <td><textarea autofocus cols = "80" rows = "5" id="original"></textarea></td>
+            </tr>
+        </table>
+        <button type="button">table:</button><br>
+        <span class="output" id="finaltable"></span>
+    </div>
+  
+    <div id="mocha"></div>
+    <script src="../tests/chai.js"></script>
+    <script src="../tests/mocha.js"></script>
+    <script>mocha.setup('tdd')</script>  
+    <script src="../tests/blanket.min.js" data-cover-adapter="../tests/mocha-blanket.js"></script>
+ 
+    <script src="../tests/tests.js"></script>
+    <script>
+       mocha.run(); 
+    </script>

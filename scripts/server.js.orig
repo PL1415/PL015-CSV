@@ -1,9 +1,14 @@
 module.exports = {
+<<<<<<< HEAD
+ calculate: function (input) {
 
+    var lines = JSON.parse(input);
+=======
  calculate: function (linesI) {
  
     var lines = JSON.parse(linesI);
  
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff
     var result;
     var regexp = /\s*"((?:[^"\\]|\\.)*)"\s*,?|\s*([^,]+),?|\s*,/g;
     var commonLength = NaN;
@@ -28,7 +33,10 @@ module.exports = {
                 commonLength = m.length;
                 error = false;
             }
-
+<<<<<<< HEAD
+console.log('lines'+lines[t])
+=======
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff
             for(var i in m) {
                 var removecomma = m[i].replace(/,\s*$/,'');
                 var remove1stquote = removecomma.replace(/^\s*"/,'');
@@ -47,8 +55,12 @@ module.exports = {
             error = true;
         }
     }
+<<<<<<< HEAD
 
 return rows
 }}
 
-
+=======
+return rows
+}}
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff

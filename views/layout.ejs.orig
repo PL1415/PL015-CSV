@@ -9,13 +9,22 @@
        
  <script type="text/javascript" src="../scripts/csv.js"></script>
         <script type="text/html" id="resultTemplate"> 
-
+                <p><h1>dddd</h1>
                 <table class="center" id="result">
+<<<<<<< HEAD
+                    <% _.each(rows, function(row) { %>
+ <h1>ddddeee</h1>
+                    <tr class="<%=row.type%>">
+                        <% _.each(row.items, function(name) { %>
+                            <td><%= name %></td>
+                        <% }); %>
+=======
                     {{ _.each(rows, function(row) { }}
                     <tr class="{{=row.type}}">
                         {{ _.each(row.items, function(name) { }}
                             <td>{{= name }}</td>
-                       {{ }); }}
+                        {{ }); }}
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff
                     </tr>
                     {{ }); }}
                 </table>
