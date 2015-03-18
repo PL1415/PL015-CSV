@@ -1,5 +1,25 @@
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
 $(document).ready(function() {
+<<<<<<< HEAD
+    $("button").click(function() {
+      var original = document.getElementById("original");
+      var lines = original.value.split(/\n+\s*/);
+      var temp = original.value;
+
+      if (window.localStorage) localStorage.original = temp;
+
+	  $.ajax({
+	      url: '/hi/'+ JSON.stringify(lines) +'/',
+	      type: 'GET',
+	      dataType: "JSON",
+	      success: function (data) {
+		render(data);
+	      }    
+	    });
+    });
+});
+
+=======
 
    // Cambiar los símbolos <% %> de underScore por los simbolos {{ }}
    // para que no creen conflictos con express.js
@@ -23,7 +43,7 @@ function calculateN () {
       var lines = JSON.stringify(linesI);
       
       if (window.localStorage) localStorage.original = temp;
-
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff
 
       $.ajax({
          url: '/ajaxEx/'+ lines +'/',
@@ -47,11 +67,20 @@ window.onload = function() {
 
 };
 
+<<<<<<< HEAD
 
+
+
+function render(rows){
+	var resultTemplate = $('#resultTemplate').html();
+    	$('#finaltable').html(_.template(resultTemplate, { rows: rows  }));
+}
+
+=======
 function render(rows){
    var resultTemplate = document.getElementById("resultTemplate").innerHTML;
 
     $('#finaltable').html( _.template(resultTemplate, { rows: rows }));
 
 }
-
+>>>>>>> 5ad788d09b4480eb66dacd0107d45bef6aa48aff
